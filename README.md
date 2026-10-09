@@ -13,9 +13,9 @@ I build ML systems that start from a messy engineering problem and end as a tool
 Multivariate time-series anomaly detection on Vulcain, Vinci and Prometheus test-bench data. Transformer-GAN, TranAD and LSTM-Autoencoder in PyTorch; data scarcity (~300 tests, fewer than 10 real anomalies) handled with synthetic anomaly generation and transfer learning; per-test train/test split, Optuna tuning, SHAP-based diagnostics and automatic pre-reports for test engineers.
 <sub>Industrial, confidential work — no public code.</sub>
 
-**Deep-learning correction of the SGP4 orbital propagator** — *academic project (Dec 2025)*
-Instead of replacing SGP4, learn its residual error (dx, dy, dz) against JPL Horizons ephemerides for the ISS and Hubble. MLP vs LSTM vs Transformer-encoder benchmark: the Transformer is the only model giving a stable, physically consistent correction, mainly along-track (SGP4 baseline 3D RMSE ≈ 17 km for the ISS).
-[Code](https://github.com/bilaldls/IMT_DeepLearning_project) · [Report (PDF)](https://bilaldelais.com/assets/reports/sgp4.pdf)
+**Learning to correct the SGP4 orbital propagator — and auditing the result** — *academic project (Dec 2025), revisited in 2026*
+We trained MLP, LSTM/GRU and Transformer models to learn SGP4's residual error against JPL Horizons ephemerides (ISS, Hubble). Revisiting the pipeline, I found that most of that "error" was a time-synchronisation bug in our own data (median ISS error 4.1 km → 0.085 km once fixed) and that Horizons is not an independent reference for these objects. The repository documents the fix, the corrected datasets and why the original model results should not be read as a correction of SGP4.
+[Code & analysis](https://github.com/bilaldls/IMT_DeepLearning_project)
 
 **Agentic RAG over ESA's ECSS space standards** — *personal project, in progress*
 An agent that answers engineering questions over the ECSS standards corpus, with retrieval, tool use and cited sources.
